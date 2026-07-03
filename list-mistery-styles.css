@@ -1,0 +1,114 @@
+body {
+    text-align: center;
+    /* 🌟 เรียกใช้ไฟล์ SVG ตรงๆ จากโฟลเดอร์งาน (อัพขึ้น Vercel ติดแน่นอน 100%) */
+    background-image: url('bg-friends.svg');    
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    min-height: 100dvh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: whitesmoke;
+    margin: 0;
+    padding: 20px;
+    position: relative; /* เพิ่มเพื่อให้ปุ่มย้อนกลับสามารถอ้างอิงตำแหน่ง Absolute ได้แม่นยำ */
+}
+
+/* 🔙 ปุ่มย้อนกลับสไตล์แฟ้มคดีลับ (เพิ่มเข้ามาใหม่ตามบรีฟบอส) */
+
+
+.back-btn:hover {
+    background-color: #9c1a1a; /* สว่างขึ้นเล็กน้อยเวลาเมาส์ชี้ */
+    transform: translateY(-2px); /* ลอยขึ้นนิดๆ เพิ่มมิติ */
+    box-shadow: 0 6px 20px rgba(212, 143, 56, 0.3); /* เรืองแสงอัมเบอร์จางๆ เข้ากับธีม */
+}
+
+/* 🕵️‍♂️ ปรับแต่งตารางผู้ต้องสงสัยให้ดูลึกลับสไตล์ห้องสืบสวน */
+table {
+    border-collapse: collapse;
+    width: 90%;
+    margin: 4vh auto 8vh auto; /* ปรับ margin บนลงเล็กน้อยเพื่อให้สมดุลกับหัวข้อ */
+    max-width: 1000px;
+    /* ทำกล่องมืดโปร่งแสง (Frosted Glass) เพื่อให้มองทะลุเห็นลายเส้น SVG ข้างหลังได้เนียนๆ */
+    background-color: rgba(0, 0, 0, 0.85); 
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+}
+
+/* หัวตาราง: ปรับเป็นสีแดงเลือดหมู/สีเชือกแดงคดีสืบสวน */
+th {
+    background-color: #7a1111; 
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+}
+
+th, td {
+    border: 1px solid rgba(255, 255, 255, 0.12); /* เส้นขอบบางๆ โปร่งแสง ไม่ฉูดฉาดเกินไป */
+    padding: 14px 18px;
+    text-align: left;
+}
+
+/* สลับสีแถวตารางให้อ่านง่ายขึ้นในที่มืด */
+tr:nth-child(even) {
+    background-color: rgba(19, 18, 18, 0.02);
+}
+
+/* 🌟 เอฟเฟกต์เวลาเอาเมาส์ชี้: แถวจะเรืองแสงสีส้มแอมเบอร์เหมือนไฟโคมไฟกะพริบ */
+tr:hover {
+    background-color: rgba(212, 143, 56, 0.12) !important;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+/* 🏷️ ปรับปรุงใหม่: หัวข้อใหญ่ เด่นชัด ทะลุแถบไม้สว่างในไฟล์ image_f75687.jpg */
+h1 {
+    font-size: 2.3rem;
+    margin: 60px auto 10px auto; /* เว้นระยะด้านบนหลบปุ่มย้อนกลับ */
+    color: #ffffff;
+    display: inline-block; /* บีบกรอบพื้นหลังให้กว้างพอดีคำ */
+    background-color: rgba(0, 0, 0, 0.75); /* ป้ายมืดโปร่งแสงรองหลังอักษร ช่วยดันให้ข้อความลอยเด่น */
+    padding: 12px 35px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* เงาหลังตัวหนังสือให้อ่านคมชัด */
+    letter-spacing: 2px;
+}
+
+/* 🔙 ปุ่มย้อนกลับ (Back Button) - ปรับสไตล์มินิมอล ขวาบน เหมือนหน้า Hint */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: absolute; /* ลอยอิสระอิงจาก body */
+    top: 30px;          /* ห่างจากขอบบน */
+    right: 40px;        /* ย้ายมาชิดขวาบน */
+    z-index: 1000;      /* ให้อยู่เลเยอร์บนสุด */
+    
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 0.95rem;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 16px;
+    
+    /* 🌟 สไตล์กระจกฝ้า: พื้นดำโปร่งแสง ขอบขาวจางๆ เหมือนหน้า Hint */
+    background-color: rgba(0, 0, 0, 0.6); 
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+    border-radius: 6px; 
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* พื้นหลังสว่างขึ้นเป็นสีขาวจางๆ */
+    border-color: #ffffff; /* เส้นขอบสว่างชัดเจนขึ้น */
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); /* มีแสงเรืองรอบๆ */
+    transform: translateY(-2px); /* ลอยขึ้นนิดๆ ให้ดูมีมิติเวลากด */
+}

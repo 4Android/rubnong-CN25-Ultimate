@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("")
+}
+
+h1 {
+    text-align: center;
+    margin-top: 10vh;
+}
+table {
+    border-collapse: collapse;
+    width: 90%;
+    margin: 10vh auto;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+

@@ -1,0 +1,52 @@
+body {
+    text-align: center;
+    margin: 40vh auto;
+    background-color: rgb(99, 95, 95);
+    color: whitesmoke;
+}
+
+.form-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: whitesmoke;
+    text-decoration: none;
+    border-radius: 5px;
+    
+}
+
+.form-link:hover {
+    background-color: #0056b3;
+}
+
+.back-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: absolute; /* ลอยอิสระอิงจาก body */
+    top: 30px;          /* ห่างจากขอบบน */
+    right: 40px;        /* ย้ายมาชิดขวาบน */
+    z-index: 1000;      /* ให้อยู่เลเยอร์บนสุด */
+    
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 0.95rem;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 16px;
+    
+    /* 🌟 สไตล์กระจกฝ้า: พื้นดำโปร่งแสง ขอบขาวจางๆ เหมือนหน้า Hint */
+    background-color: rgba(0, 0, 0, 0.6); 
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+    border-radius: 6px; 
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* พื้นหลังสว่างขึ้นเป็นสีขาวจางๆ */
+    border-color: #ffffff; /* เส้นขอบสว่างชัดเจนขึ้น */
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); /* มีแสงเรืองรอบๆ */
+    transform: translateY(-2px); /* ลอยขึ้นนิดๆ ให้ดูมีมิติเวลากด */
+}

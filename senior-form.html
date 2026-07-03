@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ฐานข้อมูลคำใบ้พี่รหัส</title>
+    <style>
+        /* ตกแต่งหน้าจอให้ดูเข้มๆ ดาร์กๆ เข้ากับธีม */
+        body { 
+            background-color: #1a1a1a; 
+            color: white; 
+            font-family: sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+        .form-box { 
+            background: #2a2a2a; 
+            padding: 30px; 
+            border-radius: 15px; 
+            width: 90%; 
+            max-width: 400px; 
+            box-shadow: 0 0 20px rgba(0,0,0,0.8); 
+            border: 1px solid #444;
+        }
+        h2 { text-align: center; margin-top: 0; color: #ffeb3b; }
+        label { font-size: 0.9rem; color: #ccc; margin-top: 10px; display: block; }
+        input { 
+            width: 100%; 
+            padding: 10px; 
+            margin: 8px 0 15px 0; 
+            border-radius: 5px; 
+            border: none; 
+            box-sizing: border-box; 
+            background: #444; 
+            color: white; 
+        }
+        button { 
+            width: 100%; 
+            padding: 12px; 
+            background-color: #28a745; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 1rem; 
+            font-weight: bold; 
+            transition: 0.3s;
+        }
+        button:hover { background-color: #218838; }
+        #status-msg { text-align: center; margin-top: 15px; font-weight: bold; display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="form-box">
+        <h2>📝 ส่งคำใบ้ให้น้องรหัส</h2>
+        
+        <label>รหัสนักศึกษาน้องรหัส (สำคัญมาก! ใช้เป็น ID อ้างอิง)</label>
+        <input type="text" id="junior-id" placeholder="เช่น 6910xxxx">
+        
+        <label>คำใบ้ใบที่ 1</label>
+        <input type="text" id="hint-1" placeholder="เช่น เป็นคนชอบกินชาบู...">
+        
+        <label>คำใบ้ใบที่ 2</label>
+        <input type="text" id="hint-2" placeholder="เช่น ใส่แว่น สูงประมาณ 170...">
+        
+        <label>คำใบ้ใบที่ 3</label>
+        <input type="text" id="hint-3" placeholder="เช่น รหัสตัวสุดท้ายคือเลข 9...">
+        
+        <button id="submit-btn">ส่งคำใบ้เข้าฐานข้อมูล</button>
+        <p id="status-msg">กำลังส่งข้อมูล...</p>
+    </div>
+
+    <!-- 🚀 โค้ดส่วนที่เชื่อมต่อกับ Firebase -->
+    <script type="module">
+        // เรียกใช้เครื่องมือจากไฟล์ config ที่เราทำไว้
+        import { db, doc, setDoc } from './firebase-config.js';
+
+        document.getElementById('submit-btn').addEventListener('click', async () => {
+            // ดึงข้อความที่เพื่อนบอสพิมพ์เข้ามา
+            const juniorId = document.getElementById('junior-id').value.trim();
+            const h1 = document.getElementById('hint-1').value.trim();
+            const h2 = document.getElementById('hint-2').value.trim();
+            const h3 = document.getElementById('hint-3').value.trim();
+            const statusMsg = document.getElementById('status-msg');
+
+            // เช็กว่ากรอกครบไหม
+            if (!juniorId || !h1 || !h2 || !h3) {
+                alert("กรุณากรอกข้อมูลให้ครบทุกช่อง!");
+                return;
+            }
+
+            // โชว์ข้อความกำลังโหลด
+            statusMsg.style.display = "block";
+            statusMsg.innerText = "⏳ กำลังส่งข้อมูล...";
+            statusMsg.style.color = "yellow";
+
+            try {
+                // 💥 คำสั่งพระเอก: โยนข้อมูลลง Firebase
+                // ให้ไปสร้างแฟ้มชื่อ 'hints' แล้วใช้ 'รหัสน้อง' เป็นชื่อไฟล์
+                await setDoc(doc(db, "hints", juniorId), {
+                    hint1: h1,
+                    hint2: h2,
+                    hint3: h3
+                });
+                
+                // ถ้ายิงผ่าน
+                statusMsg.innerText = "✅ บันทึกคำใบ้สำเร็จ!";
+                statusMsg.style.color = "lime";
+                
+                // เคลียร์ช่องพิมพ์ให้ว่าง เผื่อเพื่อนบอสจะกรอกให้น้องคนอื่นต่อ
+                setTimeout(() => {
+                    document.getElementById('junior-id').value = '';
+                    document.getElementById('hint-1').value = '';
+                    document.getElementById('hint-2').value = '';
+                    document.getElementById('hint-3').value = '';
+                    statusMsg.style.display = "none";
+                }, 3000);
+
+            } catch (error) {
+                // ถ้าเน็ตหลุด หรือยิงไม่ผ่าน
+                console.error("Error:", error);
+                statusMsg.innerText = "❌ เกิดข้อผิดพลาด กรุณาลองใหม่!";
+                statusMsg.style.color = "red";
+            }
+        });
+    </script>
+</body>
+</html>

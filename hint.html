@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="hint-styles.css" rel="stylesheet">
+    <title>HINT</title>
+</head>
+<body>
+    <div class="back-btn-container">
+        <button id="back-btn">⬅ ย้อนกลับ</button>
+    </div>
+
+    <video autoplay loop muted playsinline id="mistery-video">
+        <source src="mistery-shadow.mp4" type="video/mp4">
+    </video>
+    
+    <h1>HINT</h1>
+    <p style="margin-bottom: 2rem;"><strong>หมายเหตุ:</strong> สุ่มเลือกการ์ดมา 1 ใบ แล้วรอสุ่มการ์ดที่เหลือในเร็วๆนี้</p>
+
+    <main>
+        <div class="hint-box" data-id="card1">
+            <div class="hint-box-inner">
+                <div class="hint-box-front">
+                    <h2>?</h2>
+                </div>
+                <div class="hint-box-back">
+                    <h2 id="hint-text-1">Coming Soon...</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="hint-box" data-id="card2">
+            <div class="hint-box-inner">
+                <div class="hint-box-front">
+                    <h2>?</h2>
+                </div>
+                <div class="hint-box-back">
+                    <h2 id="hint-text-2">Coming Soon...</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="hint-box" data-id="card3">
+            <div class="hint-box-inner">
+                <div class="hint-box-front">
+                    <h2>?</h2>
+                </div>
+                <div class="hint-box-back">
+                    <h2 id="hint-text-3">Coming Soon...</h2>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 🚨 เพิ่มปุ่มแอดมินตรงนี้ครับ 🚨 -->
+    <div class="staff-control">
+        <button id="reset-game-btn">🔄 รีเซ็ตไพ่ (แอดมิน)</button>
+    </div>
+
+    <script type="module" src="hint-script.js"></script>
+</body>
+</html>

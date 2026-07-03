@@ -1,0 +1,163 @@
+body {
+    text-align: center;
+    min-height: 100dvh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+#bg-video {
+    position: fixed;        
+    right: 0;
+    bottom: 0;
+    min-width: 100%;       
+    min-height: 100%;      
+    width: auto;
+    height: auto;
+    z-index: -100;         
+    object-fit: cover;     
+    background: #1a1a1a;   
+    transform: none;       
+}
+
+h1 {
+    color: rgb(241, 240, 240);
+    text-align: left;
+    padding-left: 1.25rem;
+    margin-top: 4rem;
+    font-size: 3rem;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+    color: white;
+    box-sizing: border-box;
+    padding-left: 5%; 
+}
+
+input {
+    display: block;
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 0.8rem;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.container {
+    display: inline-block;
+    outline: 2px solid #ccc;
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(15px);
+    width: 90%;
+    max-width: 420px;
+    box-sizing: border-box; 
+    position: relative;
+    z-index: 1;            
+}
+
+.data-form {
+    padding: 10px 0;
+    width: 100%;
+}
+
+button {
+    margin-top: 45px;
+    margin-bottom: 100px;
+    padding: 10px 0;
+    border: none;
+    border-radius: 5px;
+    width: 90%;
+    background-color: orange;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+button:hover {
+    background-color: rgb(247, 183, 65);
+}
+
+button:active {
+    background-color: rgb(230, 151, 5);
+}
+
+#go-to-register {
+    color: orange;
+}
+
+.back-btn-container {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    z-index: 9999;
+}
+
+#back-btn {
+    padding: 10px 20px;
+    font-family: 'ArchiveStamp', sans-serif;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid white;
+    backdrop-filter: blur(4px);
+    transition: 0.3s ease;
+}
+
+#back-btn:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* 🌟 แก้จุดบั๊กหลัก: คุมโครงสร้างกว้าง 90% ถาวร ไม่ว่า input จะเปลี่ยนร่างเป็น text หรือ password ดีไซน์ก็ไม่แตก */
+/* จัดการตำแหน่งของไอคอนให้อยู่ในกรอบเสมอ */
+.password-wrapper {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.password-wrapper input {
+    width: 100% !important; 
+    padding: 10px;
+    padding-right: 45px; /* เว้นที่ด้านขวาไว้ให้ไอคอนตา */
+    box-sizing: border-box;
+    display: block;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+    display: flex;
+    align-items: center;
+    z-index: 10; /* ดันไอคอนขึ้นมาให้อยู่บนสุดเสมอ */
+}
+
+/* 🌟 แก้ปัญหาจุด เส้น และรูปทรงใน SVG แย่งแรงกดเมาส์แบบครอบจักรวาล */
+.eye-icon * {
+    pointer-events: none;
+}
+
+#go-to-login {
+    color: orange;
+    text-decoration: none;
+    font-weight: bold;
+}

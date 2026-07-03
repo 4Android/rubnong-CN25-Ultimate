@@ -1,0 +1,54 @@
+body {
+    background-image: url("https://i.pinimg.com/originals/29/22/db/2922db27019dbb7741620d12bdd15ed0.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Kanit';
+    font-size: 1.5rem;
+
+    display: flex;
+    align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+    justify-content: center; /* จัดให้อยู่กึ่งกลางแนวนอน */
+    min-height: 100vh;
+}
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.menu-card {
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    padding: 15px 10px;
+    transition: 0.2s ease-in-out;
+}
+
+.menu-card:hover {
+    transform: scale(1.05);
+    border-color: white;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+}
+
+.card-link {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: white;
+
+    display: flex;
+    flex-direction: column; /* เรียงจากบนลงล่าง */
+    align-items: center; /* ให้อยู่กึ่งกลาง */
+    gap: 15px; /* สร้างช่องไฟระหว่าง 'รูป' กับ 'ข้อความ' โดยไม่ต้องใช้ Margin */
+}
+
+.card-link img {
+    width: 100%;
+    max-width: 100px; /* รูปกว้างสุดแค่นี้พอ */
+    height: 100px; /* ล็อกความสูงให้รูปเท่ากันทุกกล่อง */
+    object-fit: contain;
+}
